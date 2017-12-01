@@ -1,0 +1,19 @@
+
+{% extends "blog/layout.html" %}
+
+{% block content %}
+<section>
+    <h3>Create Post</h3>
+    <form action="" method="POST" class="post-form">
+        {% csrf_token %}
+    {% for field in form %}
+    <div class="form-group">
+       {{field.label}} {{ field }}
+    </div>
+    {% endfor %}
+
+    <input type="submit" class="btn btn-primary" value="Submit">
+
+    </form>
+</section>
+{% endblock %}

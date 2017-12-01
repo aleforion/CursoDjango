@@ -1,0 +1,24 @@
+
+{% extends "blog/layout.html" %}
+
+{% block content %}
+<section>
+    {% if request.user.is_authenticated %}
+        <h1>Welcome {{ request.user }}</h1>
+
+    {% else %}
+        <h1>Auth:</h1>
+            {% if error == True %}
+                <p class="alert alert-danger">
+                    Username or password invalid!
+                </p>
+            {% endif %}
+        <form action="/blog/auth" method="POST">
+            {% csrf_token %}
+            Username: <input type="text" name="username"><br><br>
+            Password: <input type="password" name="password"><br><br>
+            <input type="submit" value="go">
+        </form>
+    {% endif %}
+</section>
+{% endblock %}
