@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django Project</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<h1>Blog - {{name}} </h1>
+{% load gravatar %}
+{% if request.user.is_authenticates %}
+<p>
+    <img src="{% gravatar_url request.user.email 25 %}">
+    Username: {{ request.user.email }}
+</p>
+{% endif %}
+<div class="container">
+    <div class="col-md-3">
+        <aside class="row">
+           <h3>Categorias:</h3>
+            <ul>
+                {% for categoria in categorias %}
+                <li>
+                   <a href="{% url 'blog.posts_categoria' categoria.pk %}">{{categoria.name}}</a>
+                </li>
+                {% endfor %}
+
+            </ul>
+        </aside>
+    </div>
+    <div class="col-md-8">
+        {% block content %} {% endblock %}
+    </div>
+</div>
+</body>
+</html>

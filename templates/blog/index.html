@@ -1,0 +1,16 @@
+
+{% extends "blog/layout.html" %}
+
+{% block content %}
+<section>
+    {% for post in posts %}
+    <article>
+        <h2>{{ post.name }} ({{ post.categoria.name }})</h2>
+        <p>
+            {{ post.content }}
+        </p>
+    </article>
+    <hr>
+    {% endfor %}
+</section>
+{% endblock %}
