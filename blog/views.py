@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 
 from blog.forms import PostForm
@@ -69,7 +70,20 @@ def auth(request):
 def logout_view(request):
     logout(request)
     return redirect('/blog')
-
+@login_required
 def post_create(request):
-    form = PostForm()
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = Post()
+            post.autor = request.user
+            post.categoria = form.cleaned_data['categoria']
+            post.name = form.cleaned_data['name']
+            post.content = form.cleaned_data['content']
+            post.statu = form.cleaned_data['statu']
+            post.save()
+            return redirect('blog.home')
+    else:
+        form = PostForm()
+
     return render(request, 'blog/post_create.html', {'form':form})

@@ -15,7 +15,7 @@ class Categoria(models.Model):
         return self.name
 
 class Post(models.Model):
-
+    autor = models.ForeignKey(User)
     categoria = models.ForeignKey(Categoria)
     name = models.CharField(max_length = 255)
     content = models.TextField()
