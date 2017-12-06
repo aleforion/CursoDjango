@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../cusoHTML/.idea/cusoHTML.iml" filepath="$PROJECT_DIR$/../cusoHTML/.idea/cusoHTML.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/django_project.iml" filepath="$PROJECT_DIR$/.idea/django_project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../jsonAprendendo/.idea/jsonAprendendo.iml" filepath="$PROJECT_DIR$/../../jsonAprendendo/.idea/jsonAprendendo.iml" />
     </modules>
   </component>
 </project>
